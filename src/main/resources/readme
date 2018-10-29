@@ -1,0 +1,17 @@
+# BCT BOGGLE
+
+BoggleTM is a word game in which players attempt to find words in sequences of adjacent letters on a plastic grid of lettered dice.
+The full game rules: https://en.wikipedia.org/wiki/Boggle#Rules
+
+### Installing
+
+Compile main.java class and run
+
+## Versioning
+
+I have used GIT for versioning. For the versions available, see the git repository in the archived files.
+
+## Authors
+
+* **Mikail Yetkin** - *Initial work* 
+
