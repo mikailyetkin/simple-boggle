@@ -172,7 +172,7 @@ public class Main {
 				if(isValidWord(word))
 				{
 					if(isUniqueWord(word.toLowerCase(),players,i))
-						result++;
+						result += getScore(word.toLowerCase());
 				}
 				
 			}
