@@ -16,6 +16,8 @@ public class Main {
 	final static String alphabet = "abcdefghijklmnopqrstuvwxyz";
     final static int N = alphabet.length();
     static char dice[][];
+    static List<String> englishWords = new ArrayList<String>();
+    
 	public static void main(String[] args) {
 	
 	    dice = createRandomDice();
@@ -194,31 +196,36 @@ public class Main {
 	public static boolean isValidWord(String word)
 	{
 		boolean result=false;
-		try(InputStream res = Main.class.getResourceAsStream("/wordlist-english.txt"))
+		if(englishWords.size()<=0)
 		{
-		    try(BufferedReader reader =
-		        new BufferedReader(new InputStreamReader(res)))
-		    {
-		    	
-		    String line = null;
-		    
-				while ((line = reader.readLine()) != null) {
-				    if(word.equals(line))
-				    {
-				    		result=true;
-				     	break;
-				    }
+			try(InputStream res = Main.class.getResourceAsStream("/wordlist-english.txt"))
+			{
+			    try(BufferedReader reader =
+			        new BufferedReader(new InputStreamReader(res)))
+			    {
+			    	
+			    		String line = null;
+					while ((line = reader.readLine()) != null) {
+						englishWords.add(line);
+					    if(word.equals(line))
+					    {
+					    		result=true;
+					    }
+					}
+				} 
+				catch (IOException e) {
+					e.printStackTrace();
+					result=false;
 				}
-			} 
-			catch (IOException e) {
-				e.printStackTrace();
-				result=false;
+			}catch (IOException ex) {
+					ex.printStackTrace();
+					result=false;
 			}
-		}catch (IOException ex) {
-				ex.printStackTrace();
-				result=false;
 		}
-	 
+		else
+		{
+			return englishWords.contains(word);
+		}
 	    return result;
 	}
 }
